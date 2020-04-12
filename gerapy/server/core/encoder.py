@@ -4,13 +4,15 @@ import datetime
 import decimal
 import json
 import uuid
+
 from django.db.models import QuerySet
 from django.forms import model_to_dict
-from django.utils import six
 from django.utils.duration import duration_iso_string
 from django.utils.functional import Promise
+from django.utils.encoding import force_str
 from django.utils.timezone import is_aware
 from django.utils import timezone
+
 from gerapy.server.core.models import Client
 from gerapy.server.core.time import DATE_TIME_FORMAT
 
@@ -40,7 +42,7 @@ class JSONEncoder(json.JSONEncoder):
         elif isinstance(o, uuid.UUID):
             return str(o)
         elif isinstance(o, Promise):
-            return six.text_type(o)
+            return force_str(o)
         elif isinstance(o, QuerySet):
             return list(o.values())
         elif isinstance(o, Client):
