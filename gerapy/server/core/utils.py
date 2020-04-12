@@ -48,7 +48,13 @@ def scrapyd_url(ip, port):
     :param port: port
     :return: string
     """
-    url = 'http://{ip}:{port}'.format(ip=ip, port=port)
+    if port:
+        url = 'http://{ip}:{port}'.format(ip=ip, port=port)
+    else:
+        if not ip.startswith('http'):
+            url = 'https://{ip}'.format(ip=ip)
+        else:
+            url = ip
     return url
 
 
@@ -62,8 +68,8 @@ def log_url(ip, port, project, spider, job):
     :param job: job
     :return: string
     """
-    url = 'http://{ip}:{port}/logs/{project}/{spider}/{job}.log'.format(ip=ip, port=port, project=project,
-                                                                        spider=spider, job=job)
+    url = '{scrapyd_url(ip, port)}/logs/{project}/{spider}/{job}.log'.format(
+            ip=ip, port=port, project=project, spider=spider, job=job)
     return url
 
 
