@@ -5,15 +5,15 @@ from furl import furl
 from subprocess import Popen, PIPE, STDOUT
 from os.path import abspath
 from shutil import ignore_patterns, copy2, copystat
-from jinja2 import Template
-from scrapyd_api import ScrapydAPI
 from bs4 import BeautifulSoup
 import traceback
 import json, os, string
 from shutil import move, copy, rmtree
 from os.path import join, exists, dirname
-from django.utils import timezone
 
+from jinja2 import Template
+from scrapyd_api import ScrapydAPI
+from django.utils import timezone
 from gerapy import get_logger
 from gerapy.settings import PROJECTS_FOLDER
 
@@ -48,7 +48,13 @@ def scrapyd_url(ip, port):
     :param port: port
     :return: string
     """
-    url = 'http://{ip}:{port}'.format(ip=ip, port=port)
+    if port:
+        url = 'http://{ip}:{port}'.format(ip=ip, port=port)
+    else:
+        if not ip.startswith('http'):
+            url = 'https://{ip}'.format(ip=ip)
+        else:
+            url = ip
     return url
 
 
@@ -62,8 +68,9 @@ def log_url(ip, port, project, spider, job):
     :param job: job
     :return: string
     """
-    url = 'http://{ip}:{port}/logs/{project}/{spider}/{job}.log'.format(ip=ip, port=port, project=project,
-                                                                        spider=spider, job=job)
+    origin = scrapyd_url(ip, port)
+    url = '{origin}/logs/{project}/{spider}/{job}.log'.format(
+            origin=origin, project=project, spider=spider, job=job)
     return url
 
 
@@ -363,7 +370,7 @@ def generate_project(project_name):
     :return: project data
     """
     # get configuration
-    from gerapy.server.core.models import Project
+    from .models import Project
     configuration = Project.objects.get(name=project_name).configuration
     configuration = json.loads(configuration)
     # remove original project dir
@@ -418,7 +425,7 @@ def clients_of_task(task):
     :param task: task object
     :return:
     """
-    from gerapy.server.core.models import Client
+    from .models import Client
     client_ids = json.loads(task.clients)
     for client_id in client_ids:
         client = Client.objects.get(id=client_id)

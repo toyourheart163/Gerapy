@@ -1,13 +1,15 @@
 import time
 from threading import Thread
 import json
+
 from django_apscheduler.models import DjangoJob
 from apscheduler.schedulers.background import BackgroundScheduler
 from django_apscheduler.jobstores import DjangoJobStore, register_events
 from gerapy import get_logger
-from gerapy.server.core.models import Client, Task
 from gerapy.settings import SCHEDULER_HEARTBEAT
-from gerapy.server.core.utils import get_scrapyd, clients_of_task, get_job_id
+
+from .models import Client, Task
+from .utils import get_scrapyd, clients_of_task, get_job_id
 
 scheduler = BackgroundScheduler()
 scheduler.add_jobstore(DjangoJobStore(), 'default')

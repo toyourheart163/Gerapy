@@ -27,6 +27,12 @@
 					<i class="icon fa fa-hdd-o"></i>
 					<span v-text="$lang.menus.tasks" class="text"></span>
 				</el-menu-item>
+				<el-menu-item
+					class="menu-list"
+					index="/spider">
+					<i class="icon fa fa-folder-o"></i>
+					<span v-text="$lang.objects.spiders" class="text"></span>
+				</el-menu-item>
 			</el-menu>
 		</div>
 	</div>
@@ -37,6 +43,7 @@
 		name: 'Left',
 	}
 </script>
+
 <style scoped>
 	.left-side .logo {
 		text-align: left !important;

@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from rest_framework.authtoken import views as auth
+
 from . import views
 
 urlpatterns = [
@@ -44,4 +45,5 @@ urlpatterns = [
     url(r'^api/task/(\d+)/remove', views.task_remove, name='task_remove'),
     url(r'^api/task/(\d+)/status', views.task_status, name='task_status'),
     url(r'^api/render', views.render_html, name='render_html'),
+    url(r'^api/hit/(\S+)', views.hit, name='hit'),
 ]

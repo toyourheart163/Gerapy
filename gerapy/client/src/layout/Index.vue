@@ -3,7 +3,7 @@
 		<section class="body-wrap">
 			<transition name="fade" mode="out-in">
 				<div class="view-page">
-					<left></left>
+					<left class="hidden-s-only"></left>
 					<wrapper>
 						<router-view></router-view>
 					</wrapper>
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 	import Wrapper from '../components/Wrapper'
 	import Left from '../components/Left'
 
@@ -28,6 +27,6 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

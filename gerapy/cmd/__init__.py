@@ -1,12 +1,13 @@
 import sys
+import argparse
+
 from gerapy import version
-from gerapy.cmd.init import init
-from gerapy.cmd.initadmin import initadmin
-from gerapy.cmd.parse import parse
-from gerapy.cmd.generate import generate
+from .init import init
+from .initadmin import initadmin
+from .parse import parse
+from .generate import generate
 from gerapy.server.core.utils import str2bool, str2str, str2json, str2body
 from gerapy.server.manage import manage
-import argparse
 
 optional_title = 'Optional arguments'
 

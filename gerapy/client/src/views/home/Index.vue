@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<el-row :gutter="20">
-			<el-col :span="8">
+			<el-col :xs="24" :sm="24" :lg="8">
+				<router-link to="/client">
 				<div class="panel">
 					<panel-title :title="$lang.objects.client">
 						<el-button size="mini" type="primary">
@@ -13,8 +14,10 @@
 						<small> {{ $lang.descriptions.normalClients }}</small>
 					</div>
 				</div>
+				</router-link>
 			</el-col>
-			<el-col :span="8">
+			<el-col :xs="24" :sm="24" :lg="8">
+				<router-link to="/client">
 				<div class="panel">
 					<panel-title :title="$lang.objects.client">
 						<el-button size="mini" type="danger">
@@ -26,8 +29,10 @@
 						<small> {{ $lang.descriptions.errorClients }}</small>
 					</div>
 				</div>
+				</router-link>
 			</el-col>
-			<el-col :span="8">
+			<el-col :xs="24" :sm="24" :lg="8">
+				<router-link to="/project">
 				<div class="panel" id="tree">
 					<panel-title :title="$lang.objects.project">
 						<el-button size="mini" type="success">
@@ -39,6 +44,7 @@
 						<small>{{ $lang.descriptions.countProjects }}</small>
 					</div>
 				</div>
+				</router-link>
 			</el-col>
 		</el-row>
 	</div>
@@ -65,7 +71,6 @@
 			getHomeStatus() {
 				this.$http.get(this.$store.state.url.home.status)
 					.then(({data: status}) => {
-						console.log(status)
 						this.status = status
 						this.loading = false
 					})

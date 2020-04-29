@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from './layout/Index.vue'
 import store from './store'
+import http from './http'
+import formatString from 'string-format-obj'
 
 Vue.use(Router)
 
@@ -12,6 +14,11 @@ const router = new Router({
 			path: '/login',
 			name: 'login',
 			component: () => import('./views/login/Login.vue'),
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: () => import('./views/login/Register.vue'),
 		},
 		{
 			path: '/',
@@ -43,6 +50,11 @@ const router = new Router({
 					path: '/client/:id/schedule',
 					name: 'clientSchedule',
 					component: () => import('./views/client/Schedule.vue')
+				},
+				{
+					path: '/spider',
+					name: 'SpiderIndex',
+					component: () => import('./views/spider/Index.vue')
 				},
 				{
 					path: '/project',
@@ -97,9 +109,9 @@ const router = new Router({
 	}
 })
 
-const whiteList = ['/login']
+const whiteList = ['/login', '/register']
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
 	let token = store.getters.token
 	if (token) {
 		if (to.path === '/login') {
@@ -107,13 +119,23 @@ router.beforeEach((to, from, next) => {
 			next({path: '/'})
 		}
 		else {
-			next()
+      try {
+        // tell server page view
+        http.get(formatString(store.state.url.hit, {
+          path: to.path
+        })).then(({data: hit}) => {
+          store.commit('fetchHit', hit)
+        })
+      } catch (error) {
+        // console.log(error)
+      }
+      next()
 		}
 	} else {
 		if (whiteList.indexOf(to.path) !== -1) {
 			next()
 		} else {
-			next({path: `/login`})
+			next({path: `/login?redirect=${to.path}`})
 		}
 	}
 })

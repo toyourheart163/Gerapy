@@ -2,10 +2,10 @@
 	<div class="panel">
 		<panel-title :title="$lang.titles.createClient"></panel-title>
 		<div class="panel-body"
-				 v-loading="loadData"
-				 :element-loading-text="$lang.messages.loading">
+      v-loading="loadData"
+      :element-loading-text="$lang.messages.loading">
 			<el-row>
-				<el-col :span="8">
+				<el-col :span="20">
 					<el-form ref="form" :model="form" :rules="rules" label-width="100px">
 						<el-form-item :label="$lang.columns.name" prop="name">
 							<el-input v-model="form.name"
@@ -21,6 +21,11 @@
 							<el-input v-model="form.port"
 												:placeholder="$lang.messages.enter + ' ' + $lang.columns.port"
 												size="small"></el-input>
+						</el-form-item>
+            <el-form-item :label="$lang.columns.open" prop="open">
+							<el-switch
+									v-model="form.open">
+							</el-switch>
 						</el-form-item>
 						<el-form-item :label="$lang.columns.auth" prop="auth">
 							<el-switch
@@ -55,7 +60,7 @@
 </template>
 <script>
   import PanelTitle from '../../components/PanelTitle'
-  import {ip, port} from '../../utils/regex'
+  import {port} from '../../utils/regex'
 
   export default {
     data() {
@@ -67,7 +72,8 @@
           description: '',
           auth: false,
           username: '',
-          password: ''
+          password: '',
+          open: false
         },
         loadData: false,
         onSubmitLoading: false,

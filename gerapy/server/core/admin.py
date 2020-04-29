@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from gerapy.server.core.models import Client, Project, Monitor
+from .models import Client, Project, Monitor, Deploy, Spider, Hit
 
 
 class ClientAdmin(admin.ModelAdmin):
@@ -19,3 +19,6 @@ class MonitorAdmin(admin.ModelAdmin):
 admin.site.register(Client, ClientAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Monitor, MonitorAdmin)
+admin.site.register(Spider)
+admin.site.register(Deploy)
+admin.site.register(Hit)

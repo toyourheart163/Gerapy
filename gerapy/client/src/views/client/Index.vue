@@ -32,29 +32,38 @@
 					align="center"
 					prop="pk"
 					:label="$lang.columns.id"
-					width="60">
+					width="50">
 				</el-table-column>
 				<el-table-column
 					align="center"
 					prop="fields.name"
 					:label="$lang.columns.name"
-					width="200">
+					width="120">
+				</el-table-column>
+				<el-table-column :label="$lang.columns.open">
+					<template slot-scope="props">
+						<el-switch
+							v-model="props.row.fields.open"
+							@change="handlerClientOpen(props.row.pk, props.row.fields.open)"
+						></el-switch>
+					</template>
 				</el-table-column>
 				<el-table-column
 					align="center"
 					prop="fields.ip"
 					:label="$lang.columns.ip"
-					width="200">
+					width="160">
 				</el-table-column>
 				<el-table-column
 					align="center"
 					prop="fields.port"
+					width="60"
 					:label="$lang.columns.port">
 				</el-table-column>
 				<el-table-column
 					align="center"
 					prop="fields.auth"
-					width="80"
+					width="60"
 					:label="$lang.columns.auth">
 					<template slot-scope="props">
             <span v-if="props.row.fields.auth">
@@ -170,6 +179,21 @@
 					type: 'warning'
 				}).then(() => {
 					this.onDeleteClient(id)
+				})
+			},
+			handlerClientOpen(id, open) {
+				this.$http.patch(this.formatString(this.$store.state.url.client.open, {
+						id: id
+					}), {open: open}
+				).then(() => {
+					this.$message.success('success')
+				}).catch(() => {
+					this.$message.error(this.$lang.messages.notOwner)
+					this.clients.map(client => {
+						if (client.pk == id) {
+							client.fields.open = !open
+						}
+					})
 				})
 			}
 		}

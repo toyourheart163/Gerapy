@@ -31,44 +31,44 @@
 				<el-collapse accordion @change="getLog">
 					<el-collapse-item v-for="job in jobs[project]" :name="job.id" :key="job.id">
 						<template slot="title">
-              <span v-if="job.spider" class="m-l-xs" :style="{minWidth: '120px'}">
-                <i class="fa fa-bug"></i>
-                {{ $lang.columns.spiderName }}:
-                {{ job.spider }}
-              </span>
+							<span v-if="job.spider" class="m-l-xs" :style="{minWidth: '120px'}">
+								<i class="fa fa-bug"></i>
+								{{ $lang.columns.spider }}:
+								{{ job.spider }}
+							</span>
 							<span v-if="job.spider" class="m-l-md" :style="{minWidth: '290px'}">
-                <i class="fa fa-key"></i>
-                {{ $lang.columns.jobID }}:
-                {{ job.id }}
-              </span>
+								<i class="fa fa-key"></i>
+								{{ $lang.columns.jobID }}:
+								{{ job.id }}
+							</span>
 							<span v-if="job.start_time" class="m-l-md" :style="{minWidth: '190px'}">
-                <i class="el-icon-time"></i>
-                {{ $lang.columns.startTime }}:
-                {{ job.start_time.substring(0, 16) }}
-              </span>
+								<i class="el-icon-time"></i>
+								{{ $lang.columns.startTime }}:
+								{{ job.start_time.substring(0, 16) }}
+							</span>
 							<span v-if="job.end_time" class="m-l-md" :style="{minWidth: '190px'}">
-                <i class="el-icon-time"></i>
-                {{ $lang.columns.endTime }}:
-                {{ job.end_time.substring(0, 16) }}
-              </span>
+								<i class="el-icon-time"></i>
+								{{ $lang.columns.endTime }}:
+								{{ job.end_time.substring(0, 16) }}
+							</span>
 							<span class="m-l-md">
-                <el-button :type="jobStatusClass[job.status]" size="mini" class="pull-right m-r-md">
+								<el-button :type="jobStatusClass[job.status]" size="mini" class="pull-right m-r-md">
 									<i v-if="['pending'].includes(job.status)" class="fa fa-circle-thin"></i>
 									<i v-if="['running'].includes(job.status)" class="fa fa-spin fa-spinner"></i>
 									<i v-if="['finished'].includes(job.status)" class="fa fa-check"></i>
-                  {{ jobStatusText[job.status] }}
-                </el-button>
-                <el-button type="danger" size="mini" class="pull-right m-r-md"
-													 v-if="['pending', 'running'].includes(job.status)" @click.stop="onCancelJob(job.id)">
-                  <i class="fa fa-remove"></i>
-                  <span v-if="['pending'].includes(job.status)">
-                    {{ $lang.buttons.cancel }}
-                  </span>
-                  <span v-if="['running'].includes(job.status)">
-                    {{ $lang.buttons.stop }}
-                  </span>
-                </el-button>
-              </span>
+									{{ jobStatusText[job.status] }}
+								</el-button>
+								<el-button type="danger" size="mini" class="pull-right m-r-md"
+									v-if="['pending', 'running'].includes(job.status)" @click.stop="onCancelJob(job.id)">
+									<i class="fa fa-remove"></i>
+									<span v-if="['pending'].includes(job.status)">
+										{{ $lang.buttons.cancel }}
+									</span>
+									<span v-if="['running'].includes(job.status)">
+										{{ $lang.buttons.stop }}
+									</span>
+								</el-button>
+							</span>
 						</template>
 						<div v-loading="logLoading" :element-loading-text="logLoadingText">
 							<pre>{{ logs[job.id] }}</pre>
@@ -79,6 +79,7 @@
 		</div>
 	</div>
 </template>
+
 <script>
 	import PanelTitle from '../../components/PanelTitle'
 
@@ -276,6 +277,7 @@
 		}
 	}
 </script>
+
 <style>
 	.el-collapse-item__content {
 		padding: 15px 15px;

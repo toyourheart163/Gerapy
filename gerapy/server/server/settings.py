@@ -57,6 +57,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
 
 ROOT_URLCONF = 'gerapy.server.server.urls'
@@ -139,6 +146,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'core/templates/static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/templates/static'),
 )

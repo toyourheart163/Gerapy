@@ -11,9 +11,11 @@ def initadmin():
     """
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gerapy.server.server.settings")
     django.setup()
-    from django.contrib.auth.models import User
+    from django.contrib.auth.models import User, Group
     
     admins = User.objects.filter(is_superuser=True)
+    for name in ['visitor', 'admin']:
+        Group.objects.update_or_create(name=name)
     if admins:
         print('Admin user already exists, you can use them to login:')
         for admin in admins:
