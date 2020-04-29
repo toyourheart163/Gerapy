@@ -3,6 +3,7 @@
 /.vscode
 /.vagrant
 *.pyc
+__pycache__
 /gerapy.egg-info
 /dist
 /build
@@ -16,3 +17,11 @@ npm-debug.log
 gerapy/server/logs/
 db.sqlite3
 install.sh
+
+# scrapyd
+twistd.pid
+dbs
+projects
+
+# vi
+.*.swp

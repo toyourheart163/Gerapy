@@ -43,7 +43,7 @@ from .utils import IGNORES, scrapyd_url, log_url, get_tree, \
 logger = get_logger(__name__)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def index(request):
     """
     render index page
@@ -75,6 +75,8 @@ def index_status(request):
             except ConnectionError:
                 data['error'] += 1
         path = os.path.abspath(join(os.getcwd(), PROJECTS_FOLDER))
+        if not os.path.isdir(path):
+            os.makedirs(path)
         files = os.listdir(path)
         # projects info
         for file in files:

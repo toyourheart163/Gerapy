@@ -18,3 +18,9 @@ beautifulsoup4
 djangorestframework
 websocket
 pyppeteer
+
+# heroku
+dj_database_url
+gunicorn
+psycopg2-binary
+httpie

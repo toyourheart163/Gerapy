@@ -146,6 +146,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'core/templates/static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/templates/static'),
 )
