@@ -61,10 +61,14 @@ export default {
     status: 'status',
     nextTime: 'next time',
     password: 'password',
+    register: 'register',
     logout: 'logout',
     login: 'login',
     reset: 'reset',
-    clone: 'clone'
+    clone: 'clone',
+    noRepeatPassword: 'noRepeatPassword',
+    registerSuccess: 'registerSuccess',
+    registerFail: 'registerFail'
   },
   heads: {
     home: 'Home',
@@ -171,7 +175,8 @@ export default {
     createConfigurableProject: 'This will create a configurable project',
     supportZip: 'Only support *.zip file',
     dragOrSelect: 'Drag or Select file',
-    cloning: 'Cloning...'
+    cloning: 'Cloning...',
+		notOwner: 'Not Owner'
   },
   descriptions: {
     normalClients: 'Normal Clients',
@@ -193,7 +198,7 @@ export default {
     url: 'URL',
     operations: 'Operations',
     jobID: 'Job ID',
-    spiderName: 'Spider Name',
+    spiderName: 'Spider',
     startTime: 'Start Time',
     endTime: 'End Time',
     description: 'Description',
@@ -266,6 +271,8 @@ export default {
     create: 'Create',
     upload: 'Upload',
     clone: 'Clone',
-    address: 'Address'
+    address: 'Address',
+    open: 'Open',
+    owner: 'Owner'
   },
 }

@@ -2,10 +2,10 @@
 	<div class="panel">
 		<panel-title :title="$lang.titles.createTask"></panel-title>
 		<div class="panel-body"
-				 v-loading="loadData"
-				 :element-loading-text="$lang.messages.loading">
+      v-loading="loadData"
+      :element-loading-text="$lang.messages.loading">
 			<el-row>
-				<el-col :span="10">
+				<el-col :span="20">
 					<substance ref="substance">
 						<template slot="submit">
 							<el-button type="primary" size="small" @click="onSubmitForm" :loading="onSubmitLoading">

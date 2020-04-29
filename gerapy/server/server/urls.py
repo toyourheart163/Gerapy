@@ -16,10 +16,15 @@ Including another URLconf
 import sys
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.documentation import include_docs_urls
+
+from .routers import router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('gerapy.server.core.urls')),
+    url(r'^api/v1/', include(router.urls)),
+    url(r'^docs', include_docs_urls(title='GerapyHub')),
 ]
 
 if 'runserver' in sys.argv:

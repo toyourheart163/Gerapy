@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<footer class="footer" v-once>Copyright &copy; {{ getYear }} Gerapy All Rights Reserved.
+		<footer class="footer" v-once>Copyright &copy; {{ getYear }} GerapyHub All Rights Reserved. page view times {{ $store.state.path.hit }}
 		</footer>
 	</div>
 </template>
@@ -9,7 +9,7 @@
 		computed: {
 			getYear() {
 				return new Date().getFullYear()
-			}
-		}
+      }
+    }
 	}
 </script>

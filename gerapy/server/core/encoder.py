@@ -13,8 +13,8 @@ from django.utils.encoding import force_str
 from django.utils.timezone import is_aware
 from django.utils import timezone
 
-from gerapy.server.core.models import Client
-from gerapy.server.core.time import DATE_TIME_FORMAT
+from .models import Client
+from .time import DATE_TIME_FORMAT
 
 
 class JSONEncoder(json.JSONEncoder):

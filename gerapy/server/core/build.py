@@ -3,13 +3,14 @@ import os
 import glob
 import tempfile
 import shutil
+from os.path import join
+from subprocess import check_call
 
 from gerapy import get_logger
 from gerapy.cmd.init import PROJECTS_FOLDER
-from gerapy.server.core.config import config
-from os.path import join
-from subprocess import check_call
 from scrapy.utils.python import retry_on_eintr
+
+from .config import config
 
 logger = get_logger(__name__)
 
@@ -40,8 +41,8 @@ setup(
 def build_egg(project):
     '''
     build project to egg file
-    :param project: 
-    :return: 
+    :param project:
+    :return:
     '''
     work_path = os.getcwd()
     try:

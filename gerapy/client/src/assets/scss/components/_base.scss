@@ -111,3 +111,15 @@ pre {
 .width-300 {
   width: 300px !important;
 }
+
+@media only screen and (max-width: 414px) {
+  .hidden-s-only {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 415px) {
+  .hidden-s-and-up {
+    display: none;
+  }
+}

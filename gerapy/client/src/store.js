@@ -37,6 +37,7 @@ export default new Vuex.Store({
     dateFormat: 'yyyy-MM-dd HH:mm:ss',
     url: {
       user: {
+        register: 'api/v1/users/',
         auth: 'api/user/auth'
       },
       home: {
@@ -45,6 +46,7 @@ export default new Vuex.Store({
       project: {
         index: '/api/project/index',
         create: '/api/project/create',
+        update: '/api/v1/projects/{id}/',
         upload: '/api/project/upload',
         clone: '/api/project/clone',
         remove: '/api/project/{name}/remove',
@@ -71,6 +73,7 @@ export default new Vuex.Store({
         index: '/api/client',
         show: '/api/client/{id}',
         status: '/api/client/{id}/status',
+        open: '/api/v1/clients/{id}/',
         update: '/api/client/{id}/update',
         remove: '/api/client/{id}/remove',
         create: '/api/client/create',
@@ -83,9 +86,13 @@ export default new Vuex.Store({
         projectVersion: '/api/client/{id}/project/{name}/version',
         projectDeploy: '/api/client/{id}/project/{name}/deploy',
       },
+      spider: {
+        index: '/api/v1/spiders/'
+      },
       util: {
         render: '/api/render'
-      }
+      },
+			hit: '/api/hit/{path}'
     }
   },
   mutations: {
@@ -131,17 +138,14 @@ export default new Vuex.Store({
       })
       state.intervals = []
     },
+    fetchHit: (state, path) => {
+      state.path = path
+    }
   },
   getters: {
-    $lang: state => {
-      return state.i18n[state.lang]
-    },
-    token: state => {
-      return state.auth.token
-    },
-    user: state => {
-      return state.auth.user
-    }
+    $lang: state => state.i18n[state.lang],
+    token: state => state.auth.token,
+    user: state => state.auth.user
   },
   plugins: [vuexPersist.plugin]
 })

@@ -61,6 +61,7 @@ export default {
     status: '状态',
     nextTime: '下次执行',
     password: '密码',
+    register: '注册',
     logout: '登出',
     login: '登录',
     reset: '重置',
@@ -171,7 +172,11 @@ export default {
     createConfigurableProject: '创建一个可配置化爬虫项目',
     supportZip: '只支持 zip 格式文件上传',
     dragOrSelect: '拖拽或选择文件',
-    cloning: '克隆中...'
+    cloning: '克隆中...',
+    noRepeatPassword: '密码：我们不一样。。',
+    registerSuccess: '注册成功',
+    registerFail: '注册失败',
+		notOwner: '没有权限'
   },
   descriptions: {
     normalClients: '主机正常运行',
@@ -266,7 +271,9 @@ export default {
     create: '创建',
     upload: '上传',
     clone: '克隆',
-    address: '地址'
+    address: '地址',
+    open: '公开',
+    owner: '拥有者'
   },
 
 }
