@@ -1,4 +1,3 @@
-release: python gerapy/server/manage.py migate
+release: python setup.py install && python gerapy/server/manage.py migrate
 web: gunicorn --pythonpath gerapy/server server.wsgi --log-file -
-scrapyd: scrapyd -l -
-
+web2: scrapyd -l -

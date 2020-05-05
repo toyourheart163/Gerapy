@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^docs', include_docs_urls(title='GerapyHub')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if 'runserver' in sys.argv:
-    # start scheduler
+# start scheduler
+if 'runserver' in sys.argv or 'gunvicorn' in sys.argv or 'heroku' in sys.argv:
     from core.scheduler import sm
     sm.start()

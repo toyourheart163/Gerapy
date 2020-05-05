@@ -31,7 +31,6 @@ from django_apscheduler.models import DjangoJob, DjangoJobExecution
 from gerapy import get_logger
 from gerapy.cmd.init import PROJECTS_FOLDER
 from gerapy.server.server.settings import TIME_ZONE
-from logparser import to_json
 
 from .response import JsonResponse
 from .models import Client, Project, Deploy, Monitor, Task, Spider, Hit
@@ -697,8 +696,7 @@ def job_log(request, client_id, project_name, spider_name, job_id):
                 return JsonResponse({'message': 'Log Not Found'}, status=404)
             # bytes to string
             text = response.content.decode(encoding, errors='replace')
-            data = to_json(text)
-            return JsonResponse(data)
+            return HttpResponse(text)
         except requests.ConnectionError:
             return JsonResponse({'message': 'Load Log Error'}, status=500)
 

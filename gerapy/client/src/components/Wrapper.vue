@@ -10,7 +10,7 @@
 				</el-row>
 			</div>
 		</div>
-		<g-footer></g-footer>
+		<g-footer class="hidden-sm-only"></g-footer>
 	</div>
 </template>
 
@@ -32,24 +32,13 @@
     },
 		computed: {
 			isMobile() {
-        return this.width < 415 ? {'is-mobile': true} : {'is-not-mobile': true}
+        return this.width < 768 ? {'is-mobile': true} : {'is-mobile': false}
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-@import "../assets/scss/components/_vars";
 
-@media screen {
-	.is-mobile {
-		margin-left: 0px!important;
-	}
-}
-
-@media screen {
-	.is-not-mobile {
-		margin-left: calc(100% -#{$sideBarWidth})!important;
-	}
-}
 </style>
+

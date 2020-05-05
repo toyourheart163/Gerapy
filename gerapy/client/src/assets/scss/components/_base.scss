@@ -112,14 +112,14 @@ pre {
   width: 300px !important;
 }
 
-@media only screen and (max-width: 414px) {
-  .hidden-s-only {
+@media only screen and (max-width: 767px) {
+  .hidden-sm-only {
     display: none;
   }
 }
 
-@media only screen and (min-width: 415px) {
-  .hidden-s-and-up {
+@media only screen and (min-width: 768px) {
+  .hidden-sm-and-up {
     display: none;
   }
 }

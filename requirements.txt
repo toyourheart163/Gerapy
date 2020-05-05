@@ -5,7 +5,7 @@ django-cors-headers
 django-apscheduler
 furl
 jinja2
-scrapy
+scrapy<=2.0.1
 scrapy-redis
 scrapy-splash
 python-scrapyd-api
@@ -18,9 +18,13 @@ beautifulsoup4
 djangorestframework
 websocket
 pyppeteer
+logparser
+coreapi
 
 # heroku
 dj_database_url
 gunicorn
 psycopg2-binary
 httpie
+scrapyd
+whitenoise

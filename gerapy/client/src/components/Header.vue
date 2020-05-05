@@ -1,12 +1,12 @@
 <template>
 	<div class="header-section">
 		<div class="pull-right">
-			<div id="nav" class="hidden-s-only">
+			<div id="nav" class="hidden-sm-only">
 				<lang-switch></lang-switch>
 				<user></user>
 			</div>
 		</div>
-		<div class="hidden-s-and-up">
+		<div class="hidden-sm-and-up">
 			<el-menu
 				class="menu"
 				router

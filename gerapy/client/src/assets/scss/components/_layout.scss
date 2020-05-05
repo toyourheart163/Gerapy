@@ -2,7 +2,7 @@
   animation: fadeIn .5s ease;
 }
 
-@import "./_vars";
+$sideBarWidth: 210px;
 
 .left-side {
   position: fixed;
@@ -37,6 +37,10 @@
       }
     }
   }
+}
+
+.is-mobile {
+	margin-left: 0px!important;
 }
 
 .main-content {

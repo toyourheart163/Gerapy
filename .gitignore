@@ -25,3 +25,9 @@ projects
 
 # vi
 .*.swp
+
+# django
+staticfiles
+staticfiles.json
+admin
+rest_framework

@@ -5,9 +5,10 @@ init db for test
 import os
 import sys
 
-pwd = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+pwd = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(pwd))
 sys.path.append(pwd)
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dev_server.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.heroku_settings')
 
 import django
 django.setup()
@@ -37,9 +38,11 @@ Client.objects.update_or_create(
         description='local', name='local',
         owner=owner, open=True)
 
-if os.path.isdir('projects'):
-    project_path = os.path.join('projects')
+project_path = os.path.join(BASE_DIR, 'projects')
+print(Project.objects.all())
+if os.path.isdir(project_path):
     files = os.listdir(project_path)
+    print(files)
     for file in files:
         Project.objects.update_or_create(
             name=file,

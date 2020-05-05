@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,6 +98,7 @@ os.path.exists(DB_DIR) or os.makedirs(DB_DIR)
 
 DB_PATH = os.path.join(DB_DIR, 'db.sqlite3')
 
+print(DB_PATH)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -146,7 +148,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'core/templates/static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/templates/static'),
 )
+
+if os.getenv('HOME') == '/app':
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

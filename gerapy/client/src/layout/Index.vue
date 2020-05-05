@@ -3,7 +3,7 @@
 		<section class="body-wrap">
 			<transition name="fade" mode="out-in">
 				<div class="view-page">
-					<left class="hidden-s-only"></left>
+					<left class="hidden-sm-only"></left>
 					<wrapper>
 						<router-view></router-view>
 					</wrapper>
